@@ -1,0 +1,16 @@
+---
+- hosts: central-logging
+  user: ubuntu
+  sudo: yes
+
+  vars_files:
+    - ../vars/global_vars.yml
+
+  tasks:
+    - include: ../tasks/elasticsearch-setup.yml
+    - include: ../tasks/logstash-setup.yml
+    - include: ../tasks/kibana-setup.yml
+
+  handlers:
+    - include: ../handlers/elasticsearch.yml
+    - include: ../handlers/logstash.yml

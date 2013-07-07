@@ -1,0 +1,13 @@
+---
+- hosts: central-logging
+  user: ubuntu
+  sudo: yes
+
+  vars_files:
+    - ../vars/global_vars.yml
+
+  tasks:
+    - include: ../tasks/logstash-setup.yml
+
+  handlers:
+    - include: ../handlers/logstash.yml

@@ -1,0 +1,6 @@
+---
+es_version: 0.90.2
+logstash_version: 1.1.13
+logstash_file: logstash-1.1.13-monolithic.jar
+logstash_url: https://logstash.objects.dreamhost.com/release/logstash-1.1.13-monolithic.jar
+kibana_domain: foo.com
