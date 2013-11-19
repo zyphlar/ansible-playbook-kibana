@@ -24,6 +24,12 @@ and add
 foo.com
 ```
 
+Finally, unless your user account name is ubuntu with sudo access, you'll need to edit each playbook to change the username.
+```shell
+vi ./playbooks/*
+```
+
+
 ### Running Ansible
 
 There are a few ways to use this set of playbooks -- you can either run the deployment of each service individually, or you can run them all in one go.
