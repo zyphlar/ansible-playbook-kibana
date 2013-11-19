@@ -10,9 +10,11 @@
     - nginx
 
 - name: ensure we have the specified logstash release
-  git: repo=https://github.com/elasticsearch/kibana.git dest=/var/www/kibana update=yes
+  git: repo=https://github.com/elasticsearch/kibana.git dest=/var/www/kibana #update=yes
 - name: ensure kibana nginx site is in place
   template: src=../files/kibana/kibana.conf.j2 dest=/etc/nginx/sites-available/kibana mode=0755
+- name: ensure kibana is secured with a password
+  template: src=../files/kibana/kibana.htpasswd.j2 dest=/etc/nginx/conf.d/kibana.htpasswd mode=0755
 - name: ensure default Nginx site is not enabled
   file: state=absent path=/etc/nginx/sites-enabled/default
 - name: ensure kibana nginx site is enabled
