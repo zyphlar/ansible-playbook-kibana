@@ -24,11 +24,16 @@ and add
 foo.com
 ```
 
-Finally, unless your user account name is ubuntu with sudo access, you'll need to edit each playbook to change the username.
+Unless your user account name is ubuntu with sudo access, you'll need to edit each playbook to change the username.
 ```shell
 vi ./playbooks/*
 ```
 
+Finally, nginx/kibana will be configured with a password to prevent random people from browsing your stuff. That's in the files/kibana/kibana.htpasswd.j2 file. You might want to change the default username/password there (kibana/kibana):
+```shell
+vi ./files/kibana/kibana.htpasswd.j2
+```
+(Google for htpasswd generators if you're unfamiliar with how to make an htpasswd file.)
 
 ### Running Ansible
 

@@ -1,7 +1,7 @@
 server {
   listen 80;
   server_name logs.notprod.pl;
-  root /var/www/kibana;
+  root /var/www/kibana/src/;
 
   # Set image format types to expire in a very long time
   location ~* ^.+\.(jpg|jpeg|gif|png|ico)$ {
@@ -17,12 +17,14 @@ server {
 
   # Catchall for everything else
   location / {
-    root /var/www/kibana;
+    root /var/www/kibana/src/;
     index index.html;
     expires 1d;
     try_files $uri/ $uri;
     if (-f $request_filename) {
       break;
     }
+    auth_basic "Restricted";
+    auth_basic_user_file /etc/nginx/conf.d/kibana.htpasswd;
   }
 }
